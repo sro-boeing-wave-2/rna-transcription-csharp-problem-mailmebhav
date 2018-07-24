@@ -10,31 +10,14 @@ namespace RNATranscriptionModule
         {
             StringBuilder result = new StringBuilder();
             string dna = nucleotide.ToUpper();
+            Dictionary<char, char> rnaTransitionDict = new Dictionary<char, char>();
+            rnaTransitionDict.Add('G', 'C');
+            rnaTransitionDict.Add('C', 'G');
+            rnaTransitionDict.Add('T', 'A');
+            rnaTransitionDict.Add('A', 'U');
             foreach (char rna in dna)
             {
-                switch (rna)
-                {
-                    case 'G':
-                        {
-                            result.Append('C');
-                            break;
-                        }
-                    case 'C':
-                        {
-                            result.Append('G');
-                            break;
-                        }
-                    case 'T':
-                        {
-                            result.Append('A');
-                            break;
-                        }
-                    case 'A':
-                        {
-                            result.Append('U');
-                            break;
-                        }
-                }
+                result.Append(rnaTransitionDict[rna]);
             }
             return result.ToString();
         }
